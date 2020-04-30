@@ -1,0 +1,58 @@
+#Day2 Devops
+This is about how the developer write a code of a file locally(git) and how it is then been uploaded on a centraized version control system (github). This is known as workstation
+and  the above work is done by Developer guys.
+After the developer upload or push the code on a CVCS, the operation guys download the code and create the enviroment for client to view the creation. 
+for all the above task we require 3 system:
+- one local VCS(git) (i downloaded git on windows) 
+- one CVCS (github)
+- one system for operation guys to create enviroment(in my case it's redhat8)
+(Create an account on github, if you don't have any
+dowload git for windows (yum install git for liux))
+---------------------first----------------------------------------------------------------------------
+#create a folder 
+mkdir folder_name
+#make it a git repo (git status ---show you that the folder is not a repo)
+git init
+#to create a file 
+cat> file_name  
+#you ca also use cat>> file_name which will append the content
+#after writing press ctrl+d 
+# now when the code is done, move it to staging area  where the eye on repo is kept and mind it that no copying of file is performed 
+git add file_name
+#to check if any version availale 
+git log
+#Now when you are sure the code is ready you have to commit, which will create a copy of file and store it in storage 
+git commit file_name -m first          (it will show error because the git does not know storage loc.)
+#these r to be done only once
+git config --global user.email "your_email"
+git config --gloal user.name ""your_username"
+#now you are ready to commit
+git commit file_name -m first
+#now you can check version and status using 
+git log
+git status
+#Note: now if you commit you don't require to write config 
+
+------------------------------------------second----------------------------------------------------------------------
+Now the task is to upload the code from local to centralised VCS(github)
+#Create a repo on github
+either click on '+' icon on top-right or click on 'new'  on left side
+Note:Initialize with README should remain untick because we have code already, we need to upload it and not create a new one
+# on git bash
+git push                   #fail because no location
+#create a origin
+git remote add origin URL                  #URL is the http link of your github repository,and origin                                                                  is not mandatory (yoou can use any name) 
+#again try to upload
+git push                 #fail because no head
+#git track keeps an eye on both local and centralised VCS and inform if any changes are made
+git push --set-upstream  origin master
+#now check git status
+git status
+# you do not require to remote add origin and setupstream again and again , now only git push will work fine
+
+
+---------------------------------------------third-------------------------------------------------------------------------
+#to be continue.....
+
+#if any doubt or any sugggestion, you are welcome
+# source from online training at linuxworld private ltd.
